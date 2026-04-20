@@ -23,18 +23,16 @@ the lifecycle of test failures:
 
 ------------------------------------------------------------------------
 
-## End-to-End Flow (Flowchart)
-
-``` mermaid
+```mermaid
 flowchart TD
     A((Start)) --> B[Ingest Test Logs]
-    B --> C[Parse & Deduplicate Failures]
+    B --> C[Parse and Deduplicate Failures]
     C --> D[Create JIRA Ticket]
     D --> E[Reproduce Failure in Clean Env]
     E --> F{Reproducible?}
-    F -- No --> X[Mark as Flaky / Skip]
-    F -- Yes --> G[Generate Fix - Agent 1 (Source)]
-    F -- Yes --> H[Generate Fix - Agent 2 (Test)]
+    F -- No --> X[Mark as Flaky or Skip]
+    F -- Yes --> G[Generate Fix - Agent 1 Source]
+    F -- Yes --> H[Generate Fix - Agent 2 Test]
     G --> I[Compare Fixes]
     H --> I
     I --> J[Select Best Fix]
